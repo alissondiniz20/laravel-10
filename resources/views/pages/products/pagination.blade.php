@@ -15,31 +15,37 @@
     </a>
   </form>
   <div class="table-responsive mt-4">
-    <table class="table table-striped table-sm">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Valor</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-          @foreach($findProduct as $product)
-            <tr>
-                <td>{{ $product->name }}</td>
-                <td>{{ 'R$' . ' ' . number_format($product->value, 2, ',', '.') }}</td>
-                <td>
-                  <a href="" class="btn btn-light btn-sm">
-                    Editar
-                  </a>
-                  <a href="" class="btn btn-danger btn-sm">
-                    Excluir
-                  </a>
-                </td>
-            </tr>            
-          @endforeach
-        </tbody>
-    </table>
+    @if ($findProduct->isEmpty())
+      <p>Não há dados existentes</p>
+
+    @else
+    
+      <table class="table table-striped table-sm">
+          <thead>
+              <tr>
+                  <th>Nome</th>
+                  <th>Valor</th>
+                  <th>Ações</th>
+              </tr>
+          </thead>
+          <tbody>
+            @foreach($findProduct as $product)
+              <tr>
+                  <td>{{ $product->name }}</td>
+                  <td>{{ 'R$' . ' ' . number_format($product->value, 2, ',', '.') }}</td>
+                  <td>
+                    <a href="" class="btn btn-light btn-sm">
+                      Editar
+                    </a>
+                    <a href="{{ route('product.delete') }}" class="btn btn-danger btn-sm">
+                      Excluir
+                    </a>
+                  </td>
+              </tr>            
+            @endforeach
+          </tbody>
+      </table>
+    @endif
   </div>
 </div>
 @endsection

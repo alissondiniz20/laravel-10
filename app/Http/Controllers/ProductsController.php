@@ -13,8 +13,15 @@ class ProductsController extends Controller
     }
 
     public function index(Request $request) {
-        $findProduct = Product::all();
+
+        $research = $request->research;
+        $findProduct = $this->product->getProductResearchIndex(search: $research ?? '');
         
         return view('pages.products.pagination', compact('findProduct'));
+    }
+
+    public function delete(Request $request)
+    {
+        
     }
 }

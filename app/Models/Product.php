@@ -13,4 +13,16 @@ class Product extends Model
         'name',
         'value',
     ];
+
+    public function getProductResearchIndex(string $search = '')
+    {
+        $product = $this->where(function ($query) use ($search) {
+            if ($search) {
+                $query->where('name', $search);
+                $query->orWhere('name', 'LIKE', "%{$search}%");
+            }
+        })->get();
+        
+        return $product;
+    }
 }
