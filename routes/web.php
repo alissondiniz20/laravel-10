@@ -18,6 +18,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::prefix('produtos')->group(function () {
+Route::prefix('products')->group(function () {
     Route::get('/', [ProductsController::class, 'index'])->name('product.index');
 });

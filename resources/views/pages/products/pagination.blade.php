@@ -7,7 +7,7 @@
 </div>
 
 <div>
-  <form action="" method="get">
+  <form action="{{ route('product.index')}}" method="get">
     <input type="text" name="research" placeholder="Digite o nome" />
     <button>Pesquisar</button>
     <a type="button" class="btn btn-success float-end">
